@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -76,3 +77,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 =======
 # EmployeePayrollFrontend
 >>>>>>> d461fb588e7abfaa398ec92331d96f35f12da00b
+=======
+# EmployeePayrollFrontend
+>>>>>>> 92f36620fc2c7ecae4ad393521799bf057d76a07
