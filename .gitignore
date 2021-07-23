@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+=======
+>>>>>>> d461fb588e7abfaa398ec92331d96f35f12da00b
 
 # dependencies
 /node_modules
