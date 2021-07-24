@@ -1,9 +1,10 @@
 import { Paper,Grid, Avatar,TextField, Button } from '@material-ui/core';
 import React from 'react';
-import './register.css'
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import {Formik, Field, Form, ErrorMessage} from 'formik'
 import * as Yup from 'yup'
+import {User} from '../services/user'
+const user = new User()
 
 function Register(){
 const paperStyle = {padding:'30px 20px',width:300,margin:'50px auto'}
@@ -25,12 +26,22 @@ const validationSchema=Yup.object().shape({
     conformPassword:Yup.string().oneOf([Yup.ref('password')],"password must match")
 })
 const onSubmit=(values,props)=>{
-    console.log(values)
-    console.log(props)
-    setTimeout(()=>{
-        props.resetForm()
-        props.setSubmitting(false)
-    },1000)
+    const userDetails={
+        firstName : values.firstName,
+        lastName : values.lastName,
+        email : values.email,
+        password: values.password
+    }
+    user.registration(userDetails).then(res => {
+        alert(res.data.message);
+    }).catch(error => {
+        console.log(error.message);
+    })
+    props.setSubmitting(false) 
+    // setTimeout(()=>{
+    //     props.resetForm()
+    //     props.setSubmitting(false)
+    // },1000)
 }
 
     return( 
