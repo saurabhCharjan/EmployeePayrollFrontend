@@ -37,11 +37,10 @@ const onSubmit=(values,props)=>{
     }).catch(error => {
         console.log(error.message);
     })
-    props.setSubmitting(false) 
-    // setTimeout(()=>{
-    //     props.resetForm()
-    //     props.setSubmitting(false)
-    // },1000)
+    setTimeout(()=>{
+        props.resetForm()
+        props.setSubmitting(false)
+    },1000)
 }
 
     return( 

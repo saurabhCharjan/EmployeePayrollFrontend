@@ -6,4 +6,8 @@ export class User  {
     registration = (userDetails)=>{
         return Axios.post("/registerUser", userDetails);
     };
+
+    login = (userCredentials)=>{
+        return Axios.post("/login",userCredentials);
+    }
 }
