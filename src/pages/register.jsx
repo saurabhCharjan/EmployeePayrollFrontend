@@ -1,12 +1,15 @@
-import { Paper,Grid, Avatar,TextField, Button } from '@material-ui/core';
+import { Paper,Grid, Avatar,TextField, Button,Typography  } from '@material-ui/core';
 import React from 'react';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import {Formik, Field, Form, ErrorMessage} from 'formik'
 import * as Yup from 'yup'
+import {Link} from 'react-router-dom'
 import {User} from '../services/user'
+import { useHistory } from "react-router-dom"
 const user = new User()
 
 function Register(){
+    let history = useHistory();
 const paperStyle = {padding:'30px 20px',width:300,margin:'50px auto'}
 const header = {margin:'3px'}
 const avatarStyle = {backgroundColor:'gray'}
@@ -34,6 +37,7 @@ const onSubmit=(values,props)=>{
     }
     user.registration(userDetails).then(res => {
         alert(res.data.message);
+        history.push("/login")
     }).catch(error => {
         console.log(error.message);
     })
@@ -50,8 +54,8 @@ const onSubmit=(values,props)=>{
                 <Avatar style={avatarStyle}>
                     <AccountBoxIcon/>
                 </Avatar> 
-                <h2 style={header}>Employee Payroll App</h2>
-                <h2 style={header}>Register</h2>
+                <h2 style={header} data-testid="title">Employee Payroll App</h2>
+                <h2 style={header} data-testid="register">Register</h2>
             </Grid>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                 {(props)=>(
@@ -62,6 +66,10 @@ const onSubmit=(values,props)=>{
                         <Field as={TextField} fullWidth data-testid="password" name="password" label='Password' type="password" placeholder= 'Enter Your password' helperText={<ErrorMessage name="password">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} fullWidth data-testid="conformPassword" name="conformPassword" label='Confom Password' type="password" placeholder= 'Enter Your conform password' helperText={<ErrorMessage name="conformPassword">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Button type='submit' data-testid="submit" varient='contained' disabled={props.isSubmitting} fullWidth style={buttonMargin}>{props.isSubmitting?"Loading...":"Register"}</Button>
+                        <Typography > 
+                        Already an User?
+                        <Link to = '/login'>Login</Link>
+                         </Typography>
                     </Form>
                 )}
             </Formik>

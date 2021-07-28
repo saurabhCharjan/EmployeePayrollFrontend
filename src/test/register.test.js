@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import Register from '../components/register';
+import Register from '../pages/register';
 
 it('check form display',() => {
     const {getByTestId} = render(<Register/>);
@@ -23,3 +23,14 @@ it('check form display',() => {
     expect(emailInput).toHaveErrorMessage;
 })
 
+it("should give correct title when register page rendered", () => {
+    const { getByTestId } = render(<Register/>);
+    const title = getByTestId("title");
+    expect(title).toHaveTextContent("Employee Payroll");
+  });
+
+  it("should give correct header when register page rendered", () => {
+    const { getByTestId } = render(<Register />);
+    const header = getByTestId("register");
+    expect(header).toHaveTextContent("Register");
+  });

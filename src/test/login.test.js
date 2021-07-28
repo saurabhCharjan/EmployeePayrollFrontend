@@ -1,7 +1,20 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import Login from '../components/login';
+import Login from '../pages/login';
+
+it("should give correct title when login page rendered", () => {
+    const { getByTestId } = render(<Login/>);
+    const title = getByTestId("title");
+    expect(title).toHaveTextContent("Employee Payroll");
+  });
+
+  it("should give correct header when login page rendered", () => {
+    const { getByTestId } = render(<Login />);
+    const header = getByTestId("login");
+    expect(header).toHaveTextContent("Login");
+  });
+
 
 it('check form display',() => {
     const {getByTestId} = render(<Login/>);
