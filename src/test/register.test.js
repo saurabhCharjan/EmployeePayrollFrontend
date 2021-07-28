@@ -34,3 +34,10 @@ it("should give correct title when register page rendered", () => {
     const header = getByTestId("register");
     expect(header).toHaveTextContent("Register");
   });
+
+  it("should check header when wrong header is given", () => {
+    const { getByTestId } = render(<Register />);
+    const header = getByTestId("title");
+    expect(header).not.toHaveTextContent("employee payroll");
+  });
+

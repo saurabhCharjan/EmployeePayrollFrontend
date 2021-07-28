@@ -15,6 +15,12 @@ it("should give correct title when login page rendered", () => {
     expect(header).toHaveTextContent("Login");
   });
 
+  it("should check header when wrong header is given", () => {
+    const { getByTestId } = render(<Login />);
+    const header = getByTestId("login");
+    expect(header).not.toHaveTextContent("login");
+  });
+
 
 it('check form display',() => {
     const {getByTestId} = render(<Login/>);

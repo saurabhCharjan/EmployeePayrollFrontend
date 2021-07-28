@@ -3,7 +3,7 @@ import React from 'react';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import {Formik, Field, Form, ErrorMessage} from 'formik'
 import * as Yup from 'yup'
-import {Link} from 'react-router-dom'
+import {Link, BrowserRouter as Router} from 'react-router-dom'
 import {User} from '../services/user'
 import { useHistory } from "react-router-dom"
 const user = new User()
@@ -28,6 +28,9 @@ const validationSchema=Yup.object().shape({
     password:Yup.string().min(8,"Enter minimum 8 char").required("Required"),
     conformPassword:Yup.string().oneOf([Yup.ref('password')],"password must match")
 })
+const handleLogin=()=>{
+    history.push("/login")
+}
 const onSubmit=(values,props)=>{
     const userDetails={
         firstName : values.firstName,
@@ -48,6 +51,7 @@ const onSubmit=(values,props)=>{
 }
 
     return( 
+        <Router>
         <Grid>
             <Paper  elevation={20} style={paperStyle}> 
             <Grid align ="center">
@@ -68,14 +72,14 @@ const onSubmit=(values,props)=>{
                         <Button type='submit' data-testid="submit" varient='contained' disabled={props.isSubmitting} fullWidth style={buttonMargin}>{props.isSubmitting?"Loading...":"Register"}</Button>
                         <Typography > 
                         Already an User?
-                        <Link to = '/login'>Login</Link>
+                        <Link to = '/login' onClick={handleLogin}>Login</Link>
                          </Typography>
                     </Form>
                 )}
             </Formik>
             </Paper>
-        
         </Grid>
+        </Router>
     );
 }
 export default Register;

@@ -3,7 +3,7 @@ import React from 'react'
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import {Formik, Field, Form, ErrorMessage} from 'formik'
 import * as Yup from 'yup'
-import {Link} from 'react-router-dom'
+import {Link, BrowserRouter as Router} from 'react-router-dom'
 import {User} from '../services/user'
 import { useHistory } from 'react-router-dom';
 const user = new User()
@@ -24,6 +24,9 @@ const Login=()=>{
         email:Yup.string().email("Enter valid mail address").required("Required"),
         password:Yup.string().min(8,"Enter minimum 8 char").required("Required")
     })
+    const handleRegister=()=>{
+        history.push("/register")
+    }
     const onSubmit=(values,props)=>{
         const userCredentials={
             email : values.email,
@@ -42,6 +45,7 @@ const Login=()=>{
     }
     
     return(
+        <Router>
         <Grid>
             <Paper elevation={20} style={paperStyle}>
                 <Grid align='center'>
@@ -59,13 +63,14 @@ const Login=()=>{
                         <Button type='submit' fullWidth style={buttonMargin} data-testid="submit">Login</Button>
                         <Typography > 
                         Do you have an account ?
-                        <Link to = '/register'>Register</Link>
+                        <Link to = '/register' onClick={handleRegister}>Register</Link>
                          </Typography>
                     </Form>
                 )}
                 </Formik>
             </Paper>
         </Grid>
+        </Router>
     )
 }
 export default Login;

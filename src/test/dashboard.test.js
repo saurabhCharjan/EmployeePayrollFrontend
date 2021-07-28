@@ -23,3 +23,9 @@ it("should give correct title when dashboard rendered", () => {
     const title = getByTestId("title");
     expect(title).toHaveTextContent("Employee Payroll App");
   });
+
+  it("should check title when wrong title is given", () => {
+    const { getByTestId } = render(<Dashboard/>);
+    const title = getByTestId("title");
+    expect(title).not.toHaveTextContent("Employee Payroll app");
+  });
