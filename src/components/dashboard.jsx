@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles} from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -9,9 +9,6 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ListItem from "@material-ui/core/ListItem";
@@ -23,8 +20,10 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { Button } from '@material-ui/core';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import {useHistory } from 'react-router-dom'
-
+import {useHistory} from 'react-router-dom'
+import {BrowserRouter as Router} from 'react-router-dom'
+import AddEmployee from './addEmployee'
+import Dialog from '@material-ui/core/Dialog';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -111,19 +110,29 @@ export default function Dashboard() {
   let history = useHistory();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [openAdd, setOpenAdd] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpenAdd(true);
+  };
+  const handleClose = () => {
+    setOpenAdd(false);
+  };
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const handleLogout = () => {
     localStorage.clear();
     history.push('/login')
   };
+  
 
   return (
+    <Router>
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -167,7 +176,7 @@ export default function Dashboard() {
             <ListItemIcon>{<ViewListIcon/>}</ListItemIcon>
             <ListItemText primary="List" />
           </ListItem>
-        <ListItem button key="Add" data-testid="add" >
+        <ListItem button key="Add" onClick={handleClickOpen} data-testid="add" >
             <ListItemIcon>{<PersonAddIcon/>}</ListItemIcon>
             <ListItemText primary="Add" />
           </ListItem>
@@ -180,19 +189,23 @@ export default function Dashboard() {
             <ListItemText primary="Delete" />
           </ListItem>
         </List>
-        <List></List>
       </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-              </Paper>
-            </Grid>
-          </Grid>
-        </Container>
-      </main>
+        <Dialog open={openAdd} onClose={handleClose} margin="auto">
+              <AddEmployee />
+        </Dialog>
     </div>
+    </Router>
   );
 }
+{/* <main className={classes.content}>
+<div className={classes.appBarSpacer} />
+<Container maxWidth="lg" className={classes.container}>
+  <Grid container spacing={3}>
+    <Grid item xs={12} md={8} lg={9}>
+      <Paper className={fixedHeightPaper}>
+      
+      </Paper>
+    </Grid>
+  </Grid>
+</Container>
+</main> */}
