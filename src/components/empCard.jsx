@@ -13,9 +13,9 @@ const employee = new Employee()
 
 export default function EmpCard({ emp }){
 
-    const deleteEmp = () => {
-        employee.deleteEmployee().then(res => {
-            alert(res.data.message)
+    const deleteEmp = (empId) => {
+        employee.deleteEmployee(empId).then(res => {
+            alert("Employee Deleted!!!")
         }).catch(error => {
             console.log(error.message);
         })
@@ -36,7 +36,7 @@ export default function EmpCard({ emp }){
                     <Typography color="textSecondary">
                         {emp.salary} 
                     </Typography>
-                    <IconButton> 
+                    <IconButton onClick={deleteEmp(emp._id)} > 
                         <DeleteOutlineOutlinedIcon/>
                     </IconButton>
                     <IconButton>

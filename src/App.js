@@ -4,10 +4,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Register from './pages/register'
 import Login from './pages/login';
 import Dashboard from './components/dashboard'
-import ListEmployee from './components/listEmployee'
 function App() {
   return (
-  //  <ListEmployee/>
     <BrowserRouter>
     <div className="App">
       <Switch>

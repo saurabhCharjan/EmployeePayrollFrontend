@@ -115,7 +115,6 @@ export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [openAdd, setOpenAdd] = React.useState(false);
-  const [openList, setOpenList] = React.useState(false);
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const handleClickOpen = () => {
     setOpenAdd(true);
@@ -123,9 +122,7 @@ export default function Dashboard() {
   const handleClose = () => {
     setOpenAdd(false);
   };
-  const handleList = () => {
-    setOpenList(true);
-  };
+  
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -179,7 +176,7 @@ export default function Dashboard() {
         </div>
         <Divider />
         <List>
-        <ListItem button key="List" onClick={handleList} data-testid="list">
+        <ListItem button key="List" data-testid="list">
             <ListItemIcon>{<ViewListIcon/>}</ListItemIcon>
             <ListItemText primary="List" />
           </ListItem>

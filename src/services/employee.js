@@ -20,7 +20,7 @@ export class Employee  {
     }
 
     deleteEmployee = (empId) =>{
-        return Axios.delete(`"/deleteEmpPayroll/"${empId}`,{
+        return Axios.delete(`/deleteEmpPayroll/${empId}`,{
             headers:{
             'token': token
           }})
