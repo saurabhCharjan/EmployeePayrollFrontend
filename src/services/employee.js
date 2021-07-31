@@ -6,11 +6,23 @@ const token = localStorage.getItem('token');
 
 export class Employee  {
     addEmployee = (empDetails)=>{
-        console.log(token,"tokennnn")
-        console.log(empDetails)
         return Axios.post("/empPayroll",empDetails,{
             headers:{
             'token': token
           }});
     };
+
+    getEmployee = () =>{
+        return Axios.get("/getEmpPayroll",{
+            headers:{
+            'token': token
+          }});
+    }
+
+    deleteEmployee = (empId) =>{
+        return Axios.delete(`"/deleteEmpPayroll/"${empId}`,{
+            headers:{
+            'token': token
+          }})
+    }
 }

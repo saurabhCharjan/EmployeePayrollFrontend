@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -6,6 +6,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
+import EmpCard from './empCard';
+import {Employee} from '../services/employee'
+const employee = new Employee()
 
 const useStyles = makeStyles({
   root: {
@@ -26,48 +30,30 @@ const useStyles = makeStyles({
 
 export default function SimpleCard() {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+  const [employees, setEmployees] = React.useState([]);
+
+  const getEmployees =()=>{
+      employee.getEmployee().then(res => {
+        setEmployees(res.data.data)
+    }).catch(error => {
+        console.log(error.message);
+    })
+  }
+
+  useEffect(() => {
+    getEmployees();
+  }, []);
+
 
   return (
-      <Grid>
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-         Saurabh charkan
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          charjan@gmail.com
-        </Typography>
-        <Typography variant="body2" component="p">
-         IT dept
-        </Typography>
-        <Typography variant="h5" component="h2">
-          sal
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button>update del</Button>
-      </CardActions>
-    </Card>
-    <Card className={classes.root}>
-    <CardContent>
-      <Typography className={classes.title} color="textSecondary" gutterBottom>
-       Saurabh charkan
-      </Typography>
-      <Typography className={classes.pos} color="textSecondary">
-        charjan@gmail.com
-      </Typography>
-      <Typography variant="body2" component="p">
-       IT dept
-      </Typography>
-      <Typography variant="h5" component="h2">
-        sal
-      </Typography>
-    </CardContent>
-    <CardActions>
-      <Button>update del</Button>
-    </CardActions>
-  </Card>
-  </Grid>
+     <Container>
+       <Grid container spacing={3} direction="row">
+        {employees.map(emp=>(
+          <Grid item key={emp.id} xs={12} md={6} lg={3}>
+            <EmpCard emp={emp}/>
+            </Grid>
+        ))}
+       </Grid>
+     </Container>  
   );
 }

@@ -24,6 +24,10 @@ import {useHistory} from 'react-router-dom'
 import {BrowserRouter as Router} from 'react-router-dom'
 import AddEmployee from './addEmployee'
 import Dialog from '@material-ui/core/Dialog';
+import ListEmployee from './listEmployee'
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -111,14 +115,17 @@ export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [openAdd, setOpenAdd] = React.useState(false);
-
+  const [openList, setOpenList] = React.useState(false);
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const handleClickOpen = () => {
     setOpenAdd(true);
   };
   const handleClose = () => {
     setOpenAdd(false);
   };
-
+  const handleList = () => {
+    setOpenList(true);
+  };
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -172,7 +179,7 @@ export default function Dashboard() {
         </div>
         <Divider />
         <List>
-        <ListItem button key="List" data-testid="list">
+        <ListItem button key="List" onClick={handleList} data-testid="list">
             <ListItemIcon>{<ViewListIcon/>}</ListItemIcon>
             <ListItemText primary="List" />
           </ListItem>
@@ -192,20 +199,18 @@ export default function Dashboard() {
       </Drawer>
         <Dialog open={openAdd} onClose={handleClose} margin="auto">
               <AddEmployee />
-        </Dialog>
+        </Dialog>        
+        <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        <Container  className={classes.container}>
+          <Grid container>
+              <Paper className={fixedHeightPaper}>
+              <ListEmployee />
+              </Paper>
+          </Grid>
+        </Container>
+      </main>
     </div>
     </Router>
   );
 }
-{/* <main className={classes.content}>
-<div className={classes.appBarSpacer} />
-<Container maxWidth="lg" className={classes.container}>
-  <Grid container spacing={3}>
-    <Grid item xs={12} md={8} lg={9}>
-      <Paper className={fixedHeightPaper}>
-      
-      </Paper>
-    </Grid>
-  </Grid>
-</Container>
-</main> */}
