@@ -12,7 +12,7 @@ const Login=()=>{
     const buttonMargin = {marginTop :'10px', color:'gray', border:'2px solid'}
     const header = {margin:'3px'}
     const paperStyle={
-        padding:20,
+        padding:'30px 20px',
         width:300,
         margin:'30px auto'
     }
