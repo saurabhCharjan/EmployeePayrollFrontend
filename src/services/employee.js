@@ -25,4 +25,18 @@ export class Employee  {
             'token': token
           }})
     }
+
+    getEmployeeById =(id) =>{
+        return Axios.get(`/getEmpPayrollByID/${id}`,{
+            headers:{
+            'token': token
+          }});
+    }
+
+    updateEmployee = (empDetails,empId)=>{
+        return Axios.put(`/updateEmpPayroll/${empId}`,empDetails,{
+            headers:{
+            'token': token
+          }})
+    }
 }

@@ -28,6 +28,9 @@ import ListEmployee from './listEmployee'
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import UpdateEmployee from './updateEmployee';
+import {Employee} from '../services/employee'
+const employee = new Employee()
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -115,13 +118,25 @@ export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [openAdd, setOpenAdd] = React.useState(false);
+  const [openUpdate, setOpenUpdate] = React.useState(false);
+  const [emp, setEmp] = React.useState({});
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const handleClickOpen = () => {
     setOpenAdd(true);
   };
   const handleClose = () => {
     setOpenAdd(false);
+    setOpenUpdate(false);
   };
+
+  const handleUpdate = (id) => {
+      employee.getEmployeeById(id).then(res => {
+         setEmp(res.data.data)
+    }).catch(error => {
+        console.log(error.message);
+    })
+    setOpenUpdate(true);
+  }
   
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -195,14 +210,17 @@ export default function Dashboard() {
         </List>
       </Drawer>
         <Dialog open={openAdd} onClose={handleClose} margin="auto">
-              <AddEmployee />
-        </Dialog>        
+              <AddEmployee  />
+        </Dialog>   
+        <Dialog open={openUpdate} onClose={handleClose} margin="auto">
+              <UpdateEmployee emp={emp} handleClose={handleClose}/>
+        </Dialog>       
         <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container  className={classes.container}>
           <Grid container>
               <Paper className={fixedHeightPaper}>
-              <ListEmployee />
+              <ListEmployee handleUpdate={handleUpdate} />
               </Paper>
           </Grid>
         </Container>
