@@ -55,7 +55,7 @@ const onSubmit=(values,props)=>{
                     <AccountBoxIcon/>
                 </Avatar> 
                 <h2 style={header} data-testid="title">Employee Payroll App</h2>
-                <h2 style={header} data-testid="register">Add Employee</h2>
+                <h2 style={header} data-testid="add">Add Employee</h2>
             </Grid>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                 {(props)=>(
