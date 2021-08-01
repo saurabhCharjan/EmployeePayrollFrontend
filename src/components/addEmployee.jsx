@@ -7,7 +7,7 @@ import {Employee} from '../services/employee'
 import { useHistory } from "react-router-dom"
 const employee = new Employee()
 
-function AddEmployee(){
+function AddEmployee({handleClose}){
     let history = useHistory();
 const paperStyle = {padding:'0 15px 10px 20px',width:300,margin:'50px auto' }
 const header = {margin:'3px'}
@@ -65,7 +65,7 @@ const onSubmit=(values,props)=>{
                         <Field as={TextField} fullWidth data-testid="email" name="email" label='Email' placeholder= 'Enter Your email' helperText={<ErrorMessage name="email">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} fullWidth data-testid="department" name="department" label='Department' placeholder= 'Enter Your Department' helperText={<ErrorMessage name="department">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} fullWidth data-testid="salary" name="salary" label='Salary' placeholder= 'Enter Your Salary' helperText={<ErrorMessage name="salary">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
-                        <Button type='submit' data-testid="submit" varient='contained' fullWidth style={buttonMargin}>Submit</Button>
+                        <Button type='submit' data-testid="submit" varient='contained' fullWidth style={buttonMargin} onClick={handleClose}>Submit</Button>
                     </Form>
                 )}
             </Formik>

@@ -210,7 +210,7 @@ export default function Dashboard() {
         </List>
       </Drawer>
         <Dialog open={openAdd} onClose={handleClose} margin="auto">
-              <AddEmployee  />
+              <AddEmployee handleClose={handleClose} />
         </Dialog>   
         <Dialog open={openUpdate} onClose={handleClose} margin="auto">
               <UpdateEmployee emp={emp} handleClose={handleClose}/>
