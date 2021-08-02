@@ -1,3 +1,10 @@
+/**
+ * @module       pages
+ * @file         register.jsx
+ * @description  creates form for registration
+ * @author       Saurabh <charjan44@gmail.com>
+ * @since        22/07/2021
+----------------------------------------------------------------------------------------------- */
 import { Paper,Grid, Avatar,TextField, Button,Typography  } from '@material-ui/core';
 import React from 'react';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
@@ -6,14 +13,12 @@ import * as Yup from 'yup'
 import {Link, BrowserRouter as Router} from 'react-router-dom'
 import {User} from '../services/user'
 import { useHistory } from "react-router-dom"
+import '../scss/register.scss'
 const user = new User()
 
 function Register(){
     let history = useHistory();
-const paperStyle = {padding:'30px 20px',width:300,margin:'50px auto'}
-const header = {margin:'3px'}
-const avatarStyle = {backgroundColor:'gray'}
-const buttonMargin = {marginTop :'10px', color:'gray', border:'2px solid'}
+
 const initialValues ={
     firstName:'',
     lastName:'',
@@ -21,6 +26,9 @@ const initialValues ={
     password:'',
     conformPassword:''
 } 
+ /**
+     * @description Validation schema for registartion page
+     */
 const validationSchema=Yup.object().shape({
     firstName:Yup.string().min(3,"Too short").required("Required"),
     lastName:Yup.string().min(3,"Too short").required("Required"),
@@ -49,17 +57,19 @@ const onSubmit=(values,props)=>{
         props.setSubmitting(false)
     },1000)
 }
-
+/**
+     * @description creating registartion form
+     */
     return( 
         <Router>
         <Grid>
-            <Paper  elevation={20} style={paperStyle}> 
+            <Paper  elevation={20} className="paperStyle"> 
             <Grid align ="center">
-                <Avatar style={avatarStyle}>
+                <Avatar className="avatarStyle">
                     <AccountBoxIcon/>
                 </Avatar> 
-                <h2 style={header} data-testid="title">Employee Payroll App</h2>
-                <h2 style={header} data-testid="register">Register</h2>
+                <h2 className="header" data-testid="title">Employee Payroll App</h2>
+                <h2 className="header" data-testid="register">Register</h2>
             </Grid>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                 {(props)=>(
@@ -69,7 +79,7 @@ const onSubmit=(values,props)=>{
                         <Field as={TextField} fullWidth data-testid="email" name="email" label='Email' placeholder= 'Enter Your email' helperText={<ErrorMessage name="email">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} fullWidth data-testid="password" name="password" label='Password' type="password" placeholder= 'Enter Your password' helperText={<ErrorMessage name="password">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} fullWidth data-testid="conformPassword" name="conformPassword" label='Confom Password' type="password" placeholder= 'Enter Your conform password' helperText={<ErrorMessage name="conformPassword">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
-                        <Button type='submit' data-testid="submit" varient='contained' disabled={props.isSubmitting} fullWidth style={buttonMargin}>{props.isSubmitting?"Loading...":"Register"}</Button>
+                        <Button type='submit' data-testid="submit" varient='contained' disabled={props.isSubmitting} fullWidth className="buttonMargin">{props.isSubmitting?"Loading...":"Register"}</Button>
                         <Typography > 
                         Already an User?
                         <Link to = '/login' onClick={handleLogin}>Login</Link>

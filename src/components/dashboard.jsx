@@ -1,3 +1,10 @@
+/**
+ * @module       components
+ * @file         dashboard.jsx
+ * @description  creates dashboard
+ * @author       Saurabh <charjan44@gmail.com>
+ * @since        29/07/2021
+----------------------------------------------------------------------------------------------- */
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles} from '@material-ui/core/styles'
@@ -27,16 +34,13 @@ import Dialog from '@material-ui/core/Dialog';
 import ListEmployee from './listEmployee'
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import UpdateEmployee from './updateEmployee';
 import {Employee} from '../services/employee'
+import '../scss/dashboard.scss'
 const employee = new Employee()
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
   },
@@ -107,20 +111,16 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
     flexDirection: 'column',
   },
-  fixedHeight: {
-    width:'auto',
-    height:'auto'
-  },
 }));
 
 export default function Dashboard() {
   let history = useHistory();
   const classes = useStyles();
+
   const [open, setOpen] = React.useState(false);
   const [openAdd, setOpenAdd] = React.useState(false);
   const [openUpdate, setOpenUpdate] = React.useState(false);
   const [emp, setEmp] = React.useState({});
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const handleClickOpen = () => {
     setOpenAdd(true);
   };
@@ -148,13 +148,15 @@ export default function Dashboard() {
     localStorage.clear();
     history.push('/login')
   };
-  
-
+/**
+     * @description creating dashboard page
+     */
   return (
     <Router>
-    <div className={classes.root}>
+    <div className="root">
       <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+      <AppBar position="absolute" 
+      className={clsx(classes.appBar, open && classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
@@ -210,7 +212,7 @@ export default function Dashboard() {
         </List>
       </Drawer>
         <Dialog open={openAdd} onClose={handleClose} margin="auto">
-              <AddEmployee  />
+              <AddEmployee handleClose={handleClose} />
         </Dialog>   
         <Dialog open={openUpdate} onClose={handleClose} margin="auto">
               <UpdateEmployee emp={emp} handleClose={handleClose}/>
@@ -219,9 +221,7 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container  className={classes.container}>
           <Grid container>
-              <Paper className={fixedHeightPaper}>
               <ListEmployee handleUpdate={handleUpdate} />
-              </Paper>
           </Grid>
         </Container>
       </main>
