@@ -23,13 +23,13 @@ export default function SimpleCard({handleUpdate}) {
   const [employees, setEmployees] = React.useState([]);
   const [open, setOpen] = React.useState(false)
 
+
   const getEmployees =()=>{
     employee.getEmployee().then(res => {
       setEmployees(res.data.data)
   }).catch(error => {
       console.log(error.message);
-  })
-  }
+  })}
 
   useEffect(() => {
     getEmployees();
