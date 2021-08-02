@@ -46,7 +46,7 @@ const handleClose = () => {
         {employees.map(emp=>(
           <Grid item key={emp.id} xs={12} md={12} lg={4}>
             <Card elevation={2}>
-                <CardContent>
+                <CardContent align='left'>
                     <Typography data-testid="fname">
                        Name: {emp.firstName}  {emp.lastName}
                     </Typography>
@@ -59,11 +59,11 @@ const handleClose = () => {
                     <Typography data-testid="salary" color="textSecondary" >
                        Salary: {emp.salary} 
                     </Typography>
-                    <IconButton data-testid="del" onClick={()=>{deleteEmp(emp._id)}} > 
-                        <DeleteOutlineOutlinedIcon/>
-                    </IconButton>
                     <IconButton onClick={()=> {handleUpdate(emp._id)}} data-testid="update">
                         <EditIcon/>
+                    </IconButton>
+                    <IconButton data-testid="del" onClick={()=>{deleteEmp(emp._id)}} color='red'> 
+                        <DeleteOutlineOutlinedIcon/>
                     </IconButton>
                 </CardContent>
             </Card>

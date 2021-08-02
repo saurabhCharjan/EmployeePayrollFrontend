@@ -27,7 +27,6 @@ import Dialog from '@material-ui/core/Dialog';
 import ListEmployee from './listEmployee'
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import UpdateEmployee from './updateEmployee';
 import {Employee} from '../services/employee'
 const employee = new Employee()
@@ -121,7 +120,6 @@ export default function Dashboard() {
   const [openAdd, setOpenAdd] = React.useState(false);
   const [openUpdate, setOpenUpdate] = React.useState(false);
   const [emp, setEmp] = React.useState({});
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const handleClickOpen = () => {
     setOpenAdd(true);
   };
@@ -220,9 +218,7 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container  className={classes.container}>
           <Grid container>
-              <Paper className={fixedHeightPaper}>
               <ListEmployee handleUpdate={handleUpdate} />
-              </Paper>
           </Grid>
         </Container>
       </main>

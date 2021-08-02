@@ -12,11 +12,11 @@ const header = {margin:'3px'}
 const avatarStyle = {backgroundColor:'gray'}
 const buttonMargin = {marginTop :'10px', color:'gray', border:'2px solid'}
 const initialValues ={
-    firstName: emp.firstName,
-    lastName: emp.lastName,
-    email: emp.email,
-    department: emp.department,
-    salary: emp.salary
+    // firstName: emp.firstName,
+    // lastName: emp.lastName,
+    // email: emp.email,
+    // department: emp.department,
+    // salary: emp.salary
 } 
 const validationSchema=Yup.object().shape({
     firstName:Yup.string().min(3,"Too short").required("Required"),

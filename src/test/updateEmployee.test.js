@@ -1,13 +1,13 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import UpdateEmployee from '../components/updateEmployee';
 
 it('check form display',() => {
-    const {getByTestId} = render(<UpdateEmployee/>);
+    const {getByTestId, queryByTestId} = render(<UpdateEmployee/>);
     const submit = getByTestId('submit');
-    const firstName = getByTestId('fName');
-    const lastName = getByTestId('lastName');
+    const firstName = queryByTestId('fName');
+    const lastName = getByTestId('lastName'); 
     const emailInput = getByTestId('email');
     const department = getByTestId('department');
     const salary = getByTestId('salary');
