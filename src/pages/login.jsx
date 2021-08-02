@@ -6,9 +6,13 @@ import * as Yup from 'yup'
 import {Link, BrowserRouter as Router} from 'react-router-dom'
 import {User} from '../services/user'
 import { useHistory } from 'react-router-dom';
+import Snackbar from '@material-ui/core/Snackbar';
+
 const user = new User()
+
 const Login=()=>{
     let history = useHistory();
+    const [open, setOpen] = React.useState(false)
     const buttonMargin = {marginTop :'10px', color:'gray', border:'2px solid'}
     const header = {margin:'3px'}
     const paperStyle={
@@ -33,16 +37,21 @@ const Login=()=>{
             password: values.password
         }
         user.login(userCredentials).then(res => {
-            alert(res.data.message);
+            setOpen(true)
             localStorage.setItem('token',res.data.token )
-            history.push('/dashboard')
+            setTimeout(()=>{
+                history.push('/dashboard')
+                props.resetForm()
+            },1000)
+            
         }).catch(error => {
             console.log(error);
         })
-        setTimeout(()=>{
-            props.resetForm()
-        },1000)
+        
     }
+    const handleClose = () => {
+        setOpen(false);
+      };
     
     return(
         <Router>
@@ -69,6 +78,13 @@ const Login=()=>{
                 )}
                 </Formik>
             </Paper>
+            <Snackbar
+                 anchorOrigin={{ vertical:'top', horizontal:'center' }}
+                 open={open}
+                 autoHideDuration={2000}
+                onClose={handleClose}
+                message="Login Successfull!!!"
+                  />
         </Grid>
         </Router>
     )

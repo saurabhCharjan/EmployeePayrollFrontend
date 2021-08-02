@@ -51,12 +51,12 @@ const onSubmit=(values,props)=>{
                     <AccountBoxIcon/>
                 </Avatar> 
                 <h2 style={header} data-testid="title">Employee Payroll App</h2>
-                <h2 style={header} data-testid="register">Update Employee</h2>
+                <h2 style={header} data-testid="update">Update Employee</h2>
             </Grid>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                 {(props)=>(
                     <Form data-testid="form">
-                        <Field as={TextField} data-testid="firstName" fullWidth name="firstName" label='First Name' placeholder= 'Enter Your first name' helperText={<ErrorMessage name="firstName">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
+                        <Field as={TextField} data-testid="fName" fullWidth name="firstName" label='First Name' placeholder= 'Enter Your first name' helperText={<ErrorMessage name="firstName">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} data-testid="lastName" fullWidth name="lastName"label='Last Name' placeholder= 'Enter Your last name' helperText={<ErrorMessage name="lastName">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} fullWidth data-testid="email" name="email" label='Email' placeholder= 'Enter Your email' helperText={<ErrorMessage name="email">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} fullWidth data-testid="department" name="department" label='Department' placeholder= 'Enter Your Department' helperText={<ErrorMessage name="department">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
