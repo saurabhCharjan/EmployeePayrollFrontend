@@ -1,3 +1,10 @@
+/**
+ * @module       pages
+ * @file         register.jsx
+ * @description  creates form for registration
+ * @author       Saurabh <charjan44@gmail.com>
+ * @since        22/07/2021
+----------------------------------------------------------------------------------------------- */
 import { Paper,Grid, Avatar,TextField, Button,Typography  } from '@material-ui/core';
 import React from 'react';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
@@ -21,6 +28,9 @@ const initialValues ={
     password:'',
     conformPassword:''
 } 
+ /**
+     * @description Validation schema for registartion page
+     */
 const validationSchema=Yup.object().shape({
     firstName:Yup.string().min(3,"Too short").required("Required"),
     lastName:Yup.string().min(3,"Too short").required("Required"),
@@ -49,7 +59,9 @@ const onSubmit=(values,props)=>{
         props.setSubmitting(false)
     },1000)
 }
-
+/**
+     * @description creating registartion form
+     */
     return( 
         <Router>
         <Grid>

@@ -1,3 +1,10 @@
+/**
+ * @module       pages
+ * @file         login.jsx
+ * @description  creates form for login
+ * @author       Saurbah <charjan44@gmail.com>
+ * @since        23/07/2021
+----------------------------------------------------------------------------------------------- */
 import { Avatar, Button, Grid, Paper,TextField, Typography} from '@material-ui/core';
 import React from 'react'
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
@@ -24,6 +31,9 @@ const Login=()=>{
         email:'',
         password:''
     } 
+    /**
+   * @description schema validation for login page
+   */
     const validationSchema=Yup.object().shape({
         email:Yup.string().email("Enter valid mail address").required("Required"),
         password:Yup.string().min(8,"Enter minimum 8 char").required("Required")
@@ -52,7 +62,9 @@ const Login=()=>{
     const handleClose = () => {
         setOpen(false);
       };
-    
+    /**
+     * @description creating login page
+     */
     return(
         <Router>
         <Grid>

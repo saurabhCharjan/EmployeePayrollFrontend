@@ -1,3 +1,10 @@
+/**
+ * @module       components
+ * @file         dashboard.jsx
+ * @description  creates dashboard
+ * @author       Saurabh <charjan44@gmail.com>
+ * @since        29/07/2021
+----------------------------------------------------------------------------------------------- */
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles} from '@material-ui/core/styles'
@@ -148,7 +155,9 @@ export default function Dashboard() {
     history.push('/login')
   };
   
-
+/**
+     * @description creating dashboard page
+     */
   return (
     <Router>
     <div className={classes.root}>

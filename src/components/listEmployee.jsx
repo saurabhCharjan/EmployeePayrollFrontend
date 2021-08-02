@@ -1,3 +1,10 @@
+/**
+ * @module       components
+ * @file         listEmployee.jsx
+ * @description  creates list of employees in cards
+ * @author       Saurabh <charjan44@gmail.com>
+ * @since        29/07/2021
+----------------------------------------------------------------------------------------------- */
 import React,{ useEffect} from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -38,7 +45,9 @@ export default function SimpleCard({handleUpdate}) {
 const handleClose = () => {
   setOpen(false);
 };
-
+/**
+     * @description creating list employee in cards
+     */
 
   return (
      <Container>

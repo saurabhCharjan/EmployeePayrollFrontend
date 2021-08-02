@@ -1,3 +1,10 @@
+/**
+ * @module       components
+ * @file         addEmployee.jsx
+ * @description  adds employee
+ * @author       Saurbh <spk2ritika1911@gmail.com>
+ * @since        29/07/2021
+----------------------------------------------------------------------------------------------- */
 import { Paper,Grid, Avatar,TextField, Button} from '@material-ui/core';
 import React from 'react';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
@@ -20,6 +27,9 @@ const initialValues ={
     department:'',
     salary:''
 } 
+/**
+   * @description schema validation for add employee page
+   */
 const validationSchema=Yup.object().shape({
     firstName:Yup.string().min(3,"Too short").required("Required"),
     lastName:Yup.string().min(3,"Too short").required("Required"),
@@ -46,7 +56,9 @@ const onSubmit=(values,props)=>{
      
     },1000)
 }
-
+/**
+     * @description creating add employee page
+     */
     return( 
         <Grid>
             <Paper  elevation={0} style={paperStyle}> 

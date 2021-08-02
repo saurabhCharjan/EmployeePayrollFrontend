@@ -1,3 +1,10 @@
+/**
+ * @module       components
+ * @file         updateEmployee.jsx
+ * @description  creates dashboard
+ * @author       Saurabh <charjan44@gmail.com>
+ * @since        29/07/2021
+----------------------------------------------------------------------------------------------- */
 import { Paper,Grid, Avatar,TextField, Button} from '@material-ui/core';
 import React from 'react';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
@@ -42,7 +49,9 @@ const onSubmit=(values,props)=>{
         props.resetForm()
     },1000)
 }
-
+/**
+     * @description creating update employee page
+     */
     return( 
         <Grid>
             <Paper  elevation={0} style={paperStyle}> 
