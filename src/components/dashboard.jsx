@@ -7,7 +7,7 @@
 ----------------------------------------------------------------------------------------------- */
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles} from '@material-ui/core/styles'
+import { makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -18,26 +18,26 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import ViewListIcon from "@material-ui/icons/ViewList";
-import PersonAddIcon from "@material-ui/icons/PersonAdd";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import ViewListIcon from '@material-ui/icons/ViewList';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { Button } from '@material-ui/core';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import {useHistory} from 'react-router-dom'
-import {BrowserRouter as Router} from 'react-router-dom'
-import AddEmployee from './addEmployee'
+import {useHistory} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
+import AddEmployee from './addEmployee';
 import Dialog from '@material-ui/core/Dialog';
-import ListEmployee from './listEmployee'
+import ListEmployee from './listEmployee';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import UpdateEmployee from './updateEmployee';
-import {Employee} from '../services/employee'
-import '../scss/dashboard.scss'
-const employee = new Employee()
+import {Employee} from '../services/employee';
+import '../scss/dashboard.scss';
+const employee = new Employee();
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -131,12 +131,12 @@ export default function Dashboard() {
 
   const handleUpdate = (id) => {
       employee.getEmployeeById(id).then(res => {
-         setEmp(res.data.data)
+         setEmp(res.data.data);
     }).catch(error => {
         console.log(error.message);
-    })
+    });
     setOpenUpdate(true);
-  }
+  };
   
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -146,7 +146,7 @@ export default function Dashboard() {
   };
   const handleLogout = () => {
     localStorage.clear();
-    history.push('/login')
+    history.push('/login');
   };
 /**
      * @description creating dashboard page

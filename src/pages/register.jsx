@@ -8,13 +8,13 @@
 import { Paper,Grid, Avatar,TextField, Button,Typography  } from '@material-ui/core';
 import React from 'react';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import {Formik, Field, Form, ErrorMessage} from 'formik'
-import * as Yup from 'yup'
-import {Link, BrowserRouter as Router} from 'react-router-dom'
-import {User} from '../services/user'
-import { useHistory } from "react-router-dom"
-import '../scss/register.scss'
-const user = new User()
+import {Formik, Field, Form, ErrorMessage} from 'formik';
+import * as Yup from 'yup';
+import {Link, BrowserRouter as Router} from 'react-router-dom';
+import {User} from '../services/user';
+import { useHistory } from 'react-router-dom';
+import '../scss/register.scss';
+const user = new User();
 
 function Register(){
     let history = useHistory();
@@ -25,38 +25,38 @@ const initialValues ={
     email:'',
     password:'',
     conformPassword:''
-} 
+}; 
  /**
      * @description Validation schema for registartion page
      */
 const validationSchema=Yup.object().shape({
-    firstName:Yup.string().min(3,"Too short").required("Required"),
-    lastName:Yup.string().min(3,"Too short").required("Required"),
-    email:Yup.string().email("Enter valid mail address").required("Required"),
-    password:Yup.string().min(8,"Enter minimum 8 char").required("Required"),
-    conformPassword:Yup.string().oneOf([Yup.ref('password')],"password must match")
-})
+    firstName:Yup.string().min(3,'Too short').required('Required'),
+    lastName:Yup.string().min(3,'Too short').required('Required'),
+    email:Yup.string().email('Enter valid mail address').required('Required'),
+    password:Yup.string().min(8,'Enter minimum 8 char').required('Required'),
+    conformPassword:Yup.string().oneOf([Yup.ref('password')],'password must match')
+});
 const handleLogin=()=>{
-    history.push("/login")
-}
+    history.push('/login');
+};
 const onSubmit=(values,props)=>{
     const userDetails={
         firstName : values.firstName,
         lastName : values.lastName,
         email : values.email,
         password: values.password
-    }
+    };
     user.registration(userDetails).then(res => {
         alert(res.data.message);
-        history.push("/login")
+        history.push('/login');
     }).catch(error => {
         console.log(error.message);
-    })
+    });
     setTimeout(()=>{
-        props.resetForm()
-        props.setSubmitting(false)
-    },1000)
-}
+        props.resetForm();
+        props.setSubmitting(false);
+    },1000);
+};
 /**
      * @description creating registartion form
      */
@@ -78,8 +78,8 @@ const onSubmit=(values,props)=>{
                         <Field as={TextField} data-testid="lastName" fullWidth name="lastName"label='Last Name' placeholder= 'Enter Your last name' helperText={<ErrorMessage name="lastName">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} fullWidth data-testid="email" name="email" label='Email' placeholder= 'Enter Your email' helperText={<ErrorMessage name="email">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} fullWidth data-testid="password" name="password" label='Password' type="password" placeholder= 'Enter Your password' helperText={<ErrorMessage name="password">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
-                        <Field as={TextField} fullWidth data-testid="conformPassword" name="conformPassword" label='Confom Password' type="password" placeholder= 'Enter Your conform password' helperText={<ErrorMessage name="conformPassword">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
-                        <Button type='submit' data-testid="submit" varient='contained' disabled={props.isSubmitting} fullWidth className="buttonMargin">{props.isSubmitting?"Loading...":"Register"}</Button>
+                        <Field as={TextField} fullWidth data-testid="conformPassword" name="conformPassword" label='Confom Password' type='password' placeholder= 'Enter Your conform password' helperText={<ErrorMessage name="conformPassword">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
+                        <Button type='submit' data-testid="submit" varient='contained' disabled={props.isSubmitting} fullWidth className='buttonMargin'>{props.isSubmitting?'Loading...':'Register'}</Button>
                         <Typography > 
                         Already an User?
                         <Link to = '/login' onClick={handleLogin}>Login</Link>

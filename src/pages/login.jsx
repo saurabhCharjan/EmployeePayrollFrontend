@@ -6,52 +6,51 @@
  * @since        23/07/2021
 ----------------------------------------------------------------------------------------------- */
 import { Avatar, Button, Grid, Paper,TextField, Typography} from '@material-ui/core';
-import React from 'react'
+import React from 'react';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import {Formik, Field, Form, ErrorMessage} from 'formik'
-import * as Yup from 'yup'
-import {Link, BrowserRouter as Router} from 'react-router-dom'
-import {User} from '../services/user'
+import {Formik, Field, Form, ErrorMessage} from 'formik';
+import * as Yup from 'yup';
+import {Link, BrowserRouter as Router} from 'react-router-dom';
+import {User} from '../services/user';
 import { useHistory } from 'react-router-dom';
 import Snackbar from '@material-ui/core/Snackbar';
-import '../scss/login.scss'
-const user = new User()
+import '../scss/login.scss';
+const user = new User();
 
 const Login=()=>{
     let history = useHistory();
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = React.useState(false);
     const initialValues ={
         email:'',
         password:''
-    } 
+    } ;
     /**
    * @description schema validation for login page
    */
     const validationSchema=Yup.object().shape({
-        email:Yup.string().email("Enter valid mail address").required("Required"),
-        password:Yup.string().min(8,"Enter minimum 8 char").required("Required")
-    })
+        email:Yup.string().email('Enter valid mail address').required('Required'),
+        password:Yup.string().min(8,'Enter minimum 8 char').required('Required')
+    });
     const handleRegister=()=>{
-        history.push("/register")
-    }
+        history.push('/register');
+    };
     const onSubmit=(values,props)=>{
         const userCredentials={
             email : values.email,
             password: values.password
-        }
+        };
         user.login(userCredentials).then(res => {
-            setOpen(true)
-            localStorage.setItem('token',res.data.token )
+            setOpen(true);
+            localStorage.setItem('token',res.data.token );
             setTimeout(()=>{
-                history.push('/dashboard')
-                props.resetForm()
-            },1000)
+                history.push('/dashboard');
+                props.resetForm();
+            },1000);
             
         }).catch(error => {
             console.log(error);
-        })
-        
-    }
+        });   
+    };
     const handleClose = () => {
         setOpen(false);
       };
@@ -92,6 +91,6 @@ const Login=()=>{
                   />
         </Grid>
         </Router>
-    )
-}
+    );
+};
 export default Login;

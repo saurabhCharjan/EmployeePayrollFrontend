@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import UpdateEmployee from '../components/updateEmployee';
 
-it('check form display',() => {
+it('givenTestIdElement_WhenRenderedUpdateEmployee_ShouldContainHeaderWithExpectedInputElements',() => {
     const {getByTestId, queryByTestId} = render(<UpdateEmployee/>);
     const submit = getByTestId('submit');
     const firstName = queryByTestId('fName');

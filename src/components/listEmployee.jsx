@@ -10,26 +10,26 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { Grid, Typography } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
-import {Employee} from '../services/employee'
+import {Employee} from '../services/employee';
 import IconButton from '@material-ui/core/IconButton'; 
 import EditIcon from '@material-ui/icons/Edit';
 import Snackbar from '@material-ui/core/Snackbar';
 
 
 import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined';
-const employee = new Employee()
+const employee = new Employee();
 
 export default function SimpleCard({handleUpdate}) {
   const [employees, setEmployees] = React.useState([]);
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
 
 
   const getEmployees =()=>{
     employee.getEmployee().then(res => {
-      setEmployees(res.data.data)
+      setEmployees(res.data.data);
   }).catch(error => {
       console.log(error.message);
-  })}
+  });};
 
   useEffect(() => {
     getEmployees();
@@ -37,11 +37,11 @@ export default function SimpleCard({handleUpdate}) {
 
   const deleteEmp = (empId) => {
     employee.deleteEmployee(empId).then(res => {
-        setOpen(true)
+        setOpen(true);
     }).catch(error => {
         console.log(error.message);
-    })
-}
+    });
+};
 const handleClose = () => {
   setOpen(false);
 };
@@ -59,19 +59,19 @@ const handleClose = () => {
                     <Typography data-testid="fname">
                        Name: {emp.firstName}  {emp.lastName}
                     </Typography>
-                    <Typography varient="h7" color="textSecondary" data-testid="email">
+                    <Typography varient="h7"  data-testid="email">
                        Email: {emp.email}
                     </Typography>
-                    <Typography color="textSecondary" data-testid="department">
+                    <Typography  data-testid="department">
                        Department: {emp.department}
                     </Typography>
-                    <Typography data-testid="salary" color="textSecondary" >
+                    <Typography data-testid="salary" >
                        Salary: {emp.salary} 
                     </Typography>
-                    <IconButton onClick={()=> {handleUpdate(emp._id)}} data-testid="update">
+                    <IconButton onClick={()=> {handleUpdate(emp._id);}} data-testid="update">
                         <EditIcon/>
                     </IconButton>
-                    <IconButton data-testid="del" onClick={()=>{deleteEmp(emp._id)}} color='red'> 
+                    <IconButton data-testid="del" onClick={()=>{deleteEmp(emp._id);}} color='red'> 
                         <DeleteOutlineOutlinedIcon/>
                     </IconButton>
                 </CardContent>

@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Dashboard from '../components/dashboard';
 
-it('check form display',() => {
+it('givenTestIdElement_WhenRenderedDashBoard_ShouldContainHeaderWithExpectedInputElements',() => {
     const {getByTestId} = render(<Dashboard/>);
     const list = getByTestId('list');
     const add = getByTestId('add');

@@ -5,7 +5,7 @@ import { act } from "react-dom/test-utils";
 
 import ListEmployee from '../components/listEmployee';
 
-it('check form display',() => {
+it('givenTestIdElement_WhenRenderedList_ShouldContainHeaderWithExpectedInputElements',() => {
     const { queryByTestId } = render(<ListEmployee />);
     const name = queryByTestId('fname');
     const update = queryByTestId('update');
