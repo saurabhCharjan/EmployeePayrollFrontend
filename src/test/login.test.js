@@ -22,7 +22,7 @@ it("should give correct title when login page rendered", () => {
   });
 
 
-it('check form display',() => {
+it('givenTestIdElement_WhenRenderedLogin_ShouldContainHeaderWithExpectedInputElements',() => {
     const {getByTestId} = render(<Login/>);
     const form = getByTestId('form');
     const submit = getByTestId('submit');

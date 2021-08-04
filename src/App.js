@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Register from './pages/register'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Register from './pages/register';
 import Login from './pages/login';
-import Dashboard from './components/dashboard'
+import Dashboard from './components/dashboard';
 function App() {
   return (
     <BrowserRouter>

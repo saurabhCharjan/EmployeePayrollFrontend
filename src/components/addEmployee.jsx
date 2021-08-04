@@ -8,12 +8,12 @@
 import { Paper,Grid, Avatar,TextField, Button} from '@material-ui/core';
 import React from 'react';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import {Formik, Field, Form, ErrorMessage} from 'formik'
-import * as Yup from 'yup'
-import {Employee} from '../services/employee'
-import { useHistory } from "react-router-dom"
-import '../scss/addEmployee.scss'
-const employee = new Employee()
+import {Formik, Field, Form, ErrorMessage} from 'formik';
+import * as Yup from 'yup';
+import {Employee} from '../services/employee';
+import { useHistory } from 'react-router-dom';
+import '../scss/addEmployee.scss';
+const employee = new Employee();
 
 function AddEmployee({handleClose}){
     let history = useHistory();
@@ -23,17 +23,17 @@ const initialValues ={
     email:'',
     department:'',
     salary:''
-} 
+} ;
 /**
    * @description schema validation for add employee page
    */
 const validationSchema=Yup.object().shape({
-    firstName:Yup.string().min(3,"Too short").required("Required"),
-    lastName:Yup.string().min(3,"Too short").required("Required"),
-    email:Yup.string().email("Enter valid mail address").required("Required"),
-    department:Yup.string().min(2,"Too short").required("Required"),
-    salary:Yup.number().min(4,"Enter atleast 4 digit").required()
-})
+    firstName:Yup.string().min(3,'Too short').required('Required'),
+    lastName:Yup.string().min(3,'Too short').required('Required'),
+    email:Yup.string().email('Enter valid mail address').required('Required'),
+    department:Yup.string().min(2,'Too short').required('Required'),
+    salary:Yup.number().min(4,'Enter atleast 4 digit').required()
+});
 const onSubmit=(values,props)=>{
     const empDetails={
         firstName : values.firstName,
@@ -41,18 +41,18 @@ const onSubmit=(values,props)=>{
         email : values.email,
         department: values.department,
         salary: values.salary
-    }
+    };
     employee.addEmployee(empDetails).then(res => {
         alert(res.data.message);
-        history.push("/dashboard")
+        history.push('/dashboard');
     }).catch(error => {
         console.log(error.message);
-    })
+    });
     setTimeout(()=>{
-        props.resetForm()
+        props.resetForm();
      
-    },1000)
-}
+    },1000);
+};
 /**
      * @description creating add employee page
      */

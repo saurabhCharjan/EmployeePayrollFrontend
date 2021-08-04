@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Register from '../pages/register';
 
-it('check form display',() => {
+it('givenTestIdElement_WhenRenderedRegister_ShouldContainHeaderWithExpectedInputElements',() => {
     const {getByTestId} = render(<Register/>);
     const form = getByTestId('form');
     const submit = getByTestId('submit');
