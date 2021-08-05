@@ -1,16 +1,16 @@
 .paperStyle{
-    padding: 30px 20px;
-    width:300px;
-    margin: 30px auto;
-} 
+    padding: 30px 20px !important;
+    width:300px !important;
+    margin: 30px auto !important;
+}
 
 .buttonMargin {
-    margin-top :10px;
-    color:gray; 
-    border:5px solid;
-    background-color: aqua;
+    margin-top :10px !important;
+    color:gray !important; 
+    border : solid 1px black !important;
 }
 
 .header {
-    margin:5px
+    margin-top :5px !important;
+    margin:5px !important;
 }

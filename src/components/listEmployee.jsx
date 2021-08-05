@@ -22,8 +22,7 @@ const employee = new Employee();
 export default function SimpleCard({handleUpdate}) {
   const [employees, setEmployees] = React.useState([]);
   const [open, setOpen] = React.useState(false);
-
-
+  
   const getEmployees =()=>{
     employee.getEmployee().then(res => {
       setEmployees(res.data.data);
@@ -33,11 +32,12 @@ export default function SimpleCard({handleUpdate}) {
 
   useEffect(() => {
     getEmployees();
-  }, [employees]);
+  }, [employee]);
 
   const deleteEmp = (empId) => {
     employee.deleteEmployee(empId).then(res => {
         setOpen(true);
+        window.location.pathname='/dashboard';
     }).catch(error => {
         console.log(error.message);
     });
@@ -53,7 +53,7 @@ const handleClose = () => {
      <Container>
        <Grid container spacing={3} direction="row">
         {employees.map(emp=>(
-          <Grid item key={emp.id} xs={12} md={12} lg={4}>
+          <Grid item key={emp._id} xs={12} md={12} lg={4}>
             <Card elevation={2}>
                 <CardContent align='left'>
                     <Typography data-testid="fname">
@@ -71,7 +71,7 @@ const handleClose = () => {
                     <IconButton onClick={()=> {handleUpdate(emp._id);}} data-testid="update">
                         <EditIcon/>
                     </IconButton>
-                    <IconButton data-testid="del" onClick={()=>{deleteEmp(emp._id);}} color='red'> 
+                    <IconButton data-testid="del" onClick={()=>{deleteEmp(emp._id);}}> 
                         <DeleteOutlineOutlinedIcon/>
                     </IconButton>
                 </CardContent>

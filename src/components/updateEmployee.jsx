@@ -43,6 +43,7 @@ const onSubmit=(values,props)=>{
     setTimeout(()=>{
         props.resetForm();
     },1000);
+    window.location.pathname='/dashboard';
 };
 /**
      * @description creating update employee page
@@ -65,7 +66,7 @@ const onSubmit=(values,props)=>{
                         <Field as={TextField} fullWidth data-testid="email" name="email" label='Email' placeholder= 'Enter Your email' helperText={<ErrorMessage name="email">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} fullWidth data-testid="department" name="department" label='Department' placeholder= 'Enter Your Department' helperText={<ErrorMessage name="department">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} fullWidth data-testid="salary" name="salary" label='Salary' placeholder= 'Enter Your Salary' helperText={<ErrorMessage name="salary">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
-                        <Button type='submit' data-testid="submit" varient='contained' fullWidth className="buttonMargin" onClick={handleClose}>Submit</Button>
+                        <Button type='submit' data-testid="submit" varient='contained' border ='2px solid' fullWidth className="buttonMargin" onClick={handleClose}>Submit</Button>
                     </Form>
                 )}
             </Formik>
