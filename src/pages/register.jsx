@@ -78,8 +78,8 @@ const onSubmit=(values,props)=>{
                         <Field as={TextField} data-testid="lastName" fullWidth name="lastName"label='Last Name' placeholder= 'Enter Your last name' helperText={<ErrorMessage name="lastName">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} fullWidth data-testid="email" name="email" label='Email' placeholder= 'Enter Your email' helperText={<ErrorMessage name="email">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} fullWidth data-testid="password" name="password" label='Password' type="password" placeholder= 'Enter Your password' helperText={<ErrorMessage name="password">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
-                        <Field as={TextField} fullWidth data-testid="conformPassword" name="conformPassword" label='Confom Password' type='password' placeholder= 'Enter Your conform password' helperText={<ErrorMessage name="conformPassword">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
-                        <Button type='submit' data-testid="submit" varient='contained' disabled={props.isSubmitting} fullWidth className='buttonMargin'>{props.isSubmitting?'Loading...':'Register'}</Button>
+                        <Field as={TextField} fullWidth data-testid="conformPassword" name="conformPassword" label='Confirm Password' type='password' placeholder= 'Enter Your conform password' helperText={<ErrorMessage name="conformPassword">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
+                        <Button type='submit' data-testid="submit" varient='contained' disabled={props.isSubmitting} border ='2px solid' fullWidth className='buttonMargin'>{props.isSubmitting?'Loading...':'Register'}</Button>
                         <Typography > 
                         Already an User?
                         <Link to = '/login' onClick={handleLogin}>Login</Link>

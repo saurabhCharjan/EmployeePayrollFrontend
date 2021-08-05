@@ -44,7 +44,7 @@ const onSubmit=(values,props)=>{
     };
     employee.addEmployee(empDetails).then(res => {
         alert(res.data.message);
-        history.push('/dashboard');
+        window.location.pathname='/dashboard';
     }).catch(error => {
         console.log(error.message);
     });

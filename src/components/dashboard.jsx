@@ -132,6 +132,7 @@ export default function Dashboard() {
   const handleUpdate = (id) => {
       employee.getEmployeeById(id).then(res => {
          setEmp(res.data.data);
+         
     }).catch(error => {
         console.log(error.message);
     });
@@ -166,7 +167,7 @@ export default function Dashboard() {
             className={clsx(classes.menuButton, open && classes.menuButtonHidden)}>
             <MenuIcon />
           </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title} data-testid="title">
+          <Typography component="h1" variant="h6" align="left" color="inherit" noWrap className={classes.title} data-testid="title">
             Employee Payroll App
           </Typography>
           <Button
