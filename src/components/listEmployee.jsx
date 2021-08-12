@@ -36,7 +36,8 @@ export default function SimpleCard({handleUpdate}) {
 
   const deleteEmp = (empId) => {
     employee.deleteEmployee(empId).then(res => {
-        setOpen(true);
+      alert(res.data.message);  
+      setOpen(true);
         window.location.pathname='/dashboard';
     }).catch(error => {
         console.log(error.message);

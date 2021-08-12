@@ -36,7 +36,7 @@ const onSubmit=(values,props)=>{
         salary: values.salary
     };
     employee.updateEmployee(empDetails,emp._id).then(res => {
-        alert('Employee updates successfull!!!');
+        alert(res.data.message);
     }).catch(error => {
         console.log(error.message);
     });
@@ -59,7 +59,7 @@ const onSubmit=(values,props)=>{
                 <h2 className="header" data-testid="update">Update Employee</h2>
             </Grid>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-                {(props)=>(
+                {()=>(
                     <Form data-testid="form">
                         <Field as={TextField} data-testid="fName" fullWidth name="firstName" label='First Name' placeholder= 'Enter Your first name' helperText={<ErrorMessage name="firstName">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} data-testid="lastName" fullWidth name="lastName"label='Last Name' placeholder= 'Enter Your last name' helperText={<ErrorMessage name="lastName">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>

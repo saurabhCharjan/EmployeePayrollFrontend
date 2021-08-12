@@ -11,12 +11,10 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import {Formik, Field, Form, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import {Employee} from '../services/employee';
-import { useHistory } from 'react-router-dom';
 import '../scss/addEmployee.scss';
 const employee = new Employee();
 
 function AddEmployee({handleClose}){
-    let history = useHistory();
 const initialValues ={
     firstName:'',
     lastName:'',
@@ -67,7 +65,7 @@ const onSubmit=(values,props)=>{
                 <h2 className="header" data-testid="add">Add Employee</h2>
             </Grid>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-                {(props)=>(
+                {()=>(
                     <Form data-testid="form">
                         <Field as={TextField} data-testid="firstName" fullWidth name="firstName" label='First Name' placeholder= 'Enter Your first name' helperText={<ErrorMessage name="firstName">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
                         <Field as={TextField} data-testid="lastName" fullWidth name="lastName"label='Last Name' placeholder= 'Enter Your last name' helperText={<ErrorMessage name="lastName">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
