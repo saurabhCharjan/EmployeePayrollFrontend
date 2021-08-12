@@ -35,8 +35,8 @@ export default function SimpleCard({handleUpdate}) {
   }, [employee]);
 
   const deleteEmp = (empId) => {
-    employee.deleteEmployee(empId).then(res => {
-      alert(res.data.message);  
+    /* eslint-disable */
+    employee.deleteEmployee(empId).then(res => {  
       setOpen(true);
         window.location.pathname='/dashboard';
     }).catch(error => {
