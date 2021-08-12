@@ -11,12 +11,10 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import {Formik, Field, Form, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import {Employee} from '../services/employee';
-import { useHistory } from 'react-router-dom';
 import '../scss/addEmployee.scss';
 const employee = new Employee();
 
 function AddEmployee({handleClose}){
-    let history = useHistory();
 const initialValues ={
     firstName:'',
     lastName:'',
@@ -67,14 +65,14 @@ const onSubmit=(values,props)=>{
                 <h2 className="header" data-testid="add">Add Employee</h2>
             </Grid>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-                {(props)=>(
+                {()=>(
                     <Form data-testid="form">
-                        <Field as={TextField} data-testid="firstName" fullWidth name="firstName" label='First Name' placeholder= 'Enter Your first name' helperText={<ErrorMessage name="firstName">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
-                        <Field as={TextField} data-testid="lastName" fullWidth name="lastName"label='Last Name' placeholder= 'Enter Your last name' helperText={<ErrorMessage name="lastName">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
-                        <Field as={TextField} fullWidth data-testid="email" name="email" label='Email' placeholder= 'Enter Your email' helperText={<ErrorMessage name="email">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
-                        <Field as={TextField} fullWidth data-testid="department" name="department" label='Department' placeholder= 'Enter Your Department' helperText={<ErrorMessage name="department">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
-                        <Field as={TextField} fullWidth data-testid="salary" name="salary" label='Salary' placeholder= 'Enter Your Salary' helperText={<ErrorMessage name="salary">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
-                        <Button type='submit' data-testid="submit" varient='contained' fullWidth className="buttonMargin" onClick={handleClose}>Submit</Button>
+                        <Field as={TextField} data-testid="firstName" fullWidth name="firstName" label='First Name' placeholder= 'Enter Your first name' helperText={<ErrorMessage name="firstName">{ msg => <div className="errorMessage">{msg}</div> }</ErrorMessage>}/>
+                        <Field as={TextField} data-testid="lastName" fullWidth name="lastName"label='Last Name' placeholder= 'Enter Your last name' helperText={<ErrorMessage name="lastName">{ msg => <div className="errorMessage">{msg}</div> }</ErrorMessage>}/>
+                        <Field as={TextField} fullWidth data-testid="email" name="email" label='Email' placeholder= 'Enter Your email' helperText={<ErrorMessage name="email">{ msg => <div className="errorMessage">{msg}</div> }</ErrorMessage>}/>
+                        <Field as={TextField} fullWidth data-testid="department" name="department" label='Department' placeholder= 'Enter Your Department' helperText={<ErrorMessage name="department">{ msg => <div className="errorMessage">{msg}</div> }</ErrorMessage>}/>
+                        <Field as={TextField} fullWidth data-testid="salary" name="salary" label='Salary' placeholder= 'Enter Your Salary' helperText={<ErrorMessage name="salary">{ msg => <div className="errorMessage">{msg}</div> }</ErrorMessage>}/>
+                        <Button type='submit' data-testid="submit" varient='contained' fullWidth className="buttonMargin" onClick={handleClose}>Submit</Button> 
                     </Form>
                 )}
             </Formik>

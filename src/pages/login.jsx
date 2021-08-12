@@ -69,10 +69,10 @@ const Login=()=>{
                 <h2 className="header" data-testid="login">Login</h2>
                 </Grid>
                 <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-                {(props)=>(
+                {()=>(
                     <Form data-testid="form">
-                        <Field as={TextField} fullWidth autoComplete="off" name='email' label='Email' placeholder= 'Enter Your email' data-testid="email" required  helperText={<ErrorMessage name="email">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
-                        <Field as={TextField} fullWidth autoComplete="off" name='password' label='Password' type='password' data-testid="password" placeholder= 'Enter Your password' required helperText={<ErrorMessage name="password">{ msg => <div style={{ color: 'red' }}>{msg}</div> }</ErrorMessage>}/>
+                        <Field as={TextField} fullWidth autoComplete="off" name='email' label='Email' placeholder= 'Enter Your email' data-testid="email" required  helperText={<ErrorMessage name="email">{ msg => <div className="errorMessage">{msg}</div> }</ErrorMessage>}/>
+                        <Field as={TextField} fullWidth autoComplete="off" name='password' label='Password' type='password' data-testid="password" placeholder= 'Enter Your password' required helperText={<ErrorMessage name="password">{ msg => <div className="errorMessage">{msg}</div> }</ErrorMessage>}/>
                         <Button type='submit' fullWidth className="buttonMargin"  data-testid="submit">Login</Button>
                         <Typography > 
                         Do you have an account ?
